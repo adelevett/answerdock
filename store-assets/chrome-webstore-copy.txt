@@ -7,7 +7,7 @@ Detailed Description
 Docs Explore recreates a lightweight research sidebar for Google Docs.
 
 What it does
-- Instant answers from DuckDuckGo while you write
+- Instant answers from DuckDuckGo for quick research while you write
 - One-click source visit, copy answer, and copy citation actions
 - Search fallback when no instant answer exists
 - Web search in new tab for users who prefer full web results
@@ -43,5 +43,4 @@ The Explore feature was extremely useful for research and citations. Current alt
 Support
 GitHub: https://github.com/adelevett/docs-explore
 Issues: https://github.com/adelevett/docs-explore/issues
-Privacy Policy URL
-Use the hosted version of PRIVACY.html from your repository or website.
+Privacy Policy: https://adelevett.github.io/docs-explore/PRIVACY.html
