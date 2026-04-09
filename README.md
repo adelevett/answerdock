@@ -35,4 +35,4 @@ Bring back the old Google Docs Explore workflow with instant answers, fast web s
 - Preferences are stored locally in chrome.storage.local
 - No custom backend, account system, or analytics service is used
 
-See [PRIVACY.html](PRIVACY.html) for a full policy
+See [PRIVACY.html](https://adelevett.github.io/docs-explore/PRIVACY.html) for a full policy
