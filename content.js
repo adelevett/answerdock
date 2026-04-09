@@ -4,7 +4,7 @@
   "use strict";
 
   /* ── constants ─────────────────────────────────────────────────── */
-  const TOGGLE_SHORTCUT = { key: "e", ctrlKey: true, shiftKey: true };
+  /* keyboard shortcut is handled via chrome.commands in background.js */
   const SIDEBAR_ID      = "__docs_explore_sidebar__";
   const TOGGLE_ID       = "__docs_explore_toggle__";
   const EXTENSION_ORIGIN = new URL(chrome.runtime.getURL("/")).origin;
@@ -28,7 +28,8 @@
   function createToggle () {
     toggleBtn = document.createElement("button");
     toggleBtn.id          = TOGGLE_ID;
-    toggleBtn.title       = "Docs Explore  (Ctrl+Shift+E)";
+    const isMac = navigator.platform.includes("Mac") || navigator.userAgent.includes("Mac");
+    toggleBtn.title       = `Docs Explore  (${isMac ? "Cmd" : "Ctrl"}+Shift+E)`;
     toggleBtn.innerHTML   = `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
            stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -45,16 +46,6 @@
     iframe.classList.toggle("__de_open__", sidebarOpen);
     toggleBtn.classList.toggle("__de_active__", sidebarOpen);
   }
-
-  /* ── keyboard shortcut ──────────────────────────────────────────── */
-  document.addEventListener("keydown", (e) => {
-    if (e.key === TOGGLE_SHORTCUT.key &&
-        e.ctrlKey === TOGGLE_SHORTCUT.ctrlKey &&
-        e.shiftKey === TOGGLE_SHORTCUT.shiftKey) {
-      e.preventDefault();
-      toggleSidebar();
-    }
-  });
 
   /* ── messages from sidebar ──────────────────────────────────────── */
   window.addEventListener("message", (e) => {

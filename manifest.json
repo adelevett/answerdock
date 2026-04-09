@@ -32,8 +32,18 @@
 
   "options_page": "options.html",
 
+  "commands": {
+    "toggle-sidebar": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+E",
+        "mac":     "Command+Shift+E"
+      },
+      "description": "Toggle Docs Explore sidebar"
+    }
+  },
+
   "action": {
-    "default_title": "Toggle Docs Explore (Ctrl+Shift+E)",
+    "default_title": "Toggle Docs Explore (Cmd+Shift+E / Ctrl+Shift+E)",
     "default_icon": {
       "16":  "icons/icon16.png",
       "48":  "icons/icon48.png",

@@ -16,6 +16,15 @@ chrome.action.onClicked.addListener(async (tab) => {
   await chrome.tabs.create({ url: DOCS_CREATE_URL });
 });
 
+chrome.commands.onCommand.addListener(async (command) => {
+  if (command !== "toggle-sidebar") return;
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  if (!tab) return;
+  if (isDocsDocumentUrl(String(tab.url || ""))) {
+    await toggleDocsSidebar(tab);
+  }
+});
+
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.removeAll(() => {
     chrome.contextMenus.create({
