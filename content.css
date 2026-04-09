@@ -1,0 +1,52 @@
+/* content.css — styles for elements injected directly into the Docs DOM */
+
+#__docs_explore_sidebar__ {
+  position: fixed;
+  top: 0;
+  right: -340px;           /* hidden off-screen */
+  width: 320px;
+  height: 100vh;
+  border: none;
+  z-index: 9999;
+  border-left: 1px solid #e0e0e0;
+  box-shadow: -4px 0 24px rgba(0,0,0,.12);
+  background: transparent;
+  transition: right .25s cubic-bezier(.4,0,.2,1);
+  border-radius: 0;
+}
+
+#__docs_explore_sidebar__.__de_open__ {
+  right: 0;
+}
+
+/* ── floating toggle button ─────────────────────────────────────── */
+#__docs_explore_toggle__ {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #1a73e8;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(26,115,232,.45);
+  transition: background .15s, transform .15s, right .25s cubic-bezier(.4,0,.2,1);
+}
+
+#__docs_explore_toggle__:hover {
+  background: #1557b0;
+  transform: scale(1.07);
+}
+
+#__docs_explore_toggle__.__de_active__ {
+  right: 336px;   /* move with sidebar */
+  background: #e8f0fe;
+  color: #1a73e8;
+  box-shadow: 0 2px 12px rgba(26,115,232,.2);
+}

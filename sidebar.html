@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docs Explore</title>
+  <link rel="stylesheet" href="sidebar.css" />
+</head>
+<body>
+
+<!-- ── header ──────────────────────────────────────────────────── -->
+<header class="sb-header">
+  <div class="sb-wordmark">
+    <svg class="sb-logo" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="9" cy="9" r="6.5" stroke="#1a73e8" stroke-width="1.8"/>
+      <line x1="14" y1="14" x2="18.5" y2="18.5" stroke="#1a73e8" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="6.5" y1="9" x2="11.5" y2="9" stroke="#1a73e8" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="9" y1="6.5" x2="9" y2="11.5" stroke="#1a73e8" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <span class="sb-title">Explore</span>
+  </div>
+  <button class="sb-close" id="closeBtn" title="Close (Ctrl+Shift+E)">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" width="16" height="16">
+      <line x1="4" y1="4" x2="16" y2="16"/><line x1="16" y1="4" x2="4" y2="16"/>
+    </svg>
+  </button>
+</header>
+
+<!-- ── search bar ──────────────────────────────────────────────── -->
+<div class="sb-search-wrap">
+  <div class="sb-search-box">
+    <svg class="sb-search-icon" viewBox="0 0 20 20" fill="none" stroke="#9aa0a6"
+         stroke-width="1.8" stroke-linecap="round" width="16" height="16">
+      <circle cx="9" cy="9" r="5.5"/><line x1="13.5" y1="13.5" x2="17" y2="17"/>
+    </svg>
+    <input id="searchInput"
+           type="search"
+           placeholder="Search the web…"
+           autocomplete="off"
+           spellcheck="false" />
+    <button class="sb-clear" id="clearBtn" title="Clear" aria-label="Clear search">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"
+           stroke-linecap="round" width="13" height="13">
+        <line x1="4" y1="4" x2="16" y2="16"/><line x1="16" y1="4" x2="4" y2="16"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<!-- ── status / empty states ───────────────────────────────────── -->
+<div class="sb-status" id="statusArea">
+  <div class="sb-empty-state" id="emptyState">
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="52">
+      <circle cx="28" cy="28" r="18" stroke="#dadce0" stroke-width="2.5"/>
+      <line x1="40" y1="40" x2="56" y2="56" stroke="#dadce0" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="21" y1="28" x2="35" y2="28" stroke="#dadce0" stroke-width="2" stroke-linecap="round"/>
+      <line x1="28" y1="21" x2="28" y2="35" stroke="#dadce0" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+      <p>Search for instant answers<br/>and citable sources</p>
+  </div>
+
+  <div class="sb-error" id="errorMsg" hidden></div>
+</div>
+
+<!-- ── results ─────────────────────────────────────────────────── -->
+<ul class="sb-results" id="resultsList" hidden></ul>
+
+<!-- ── footer ──────────────────────────────────────────────────── -->
+<footer class="sb-footer">
+  Powered by <a href="https://duckduckgo.com" target="_blank" rel="noopener">DuckDuckGo Instant Answer</a>
+  · <a href="#" id="settingsLink">Settings</a>
+</footer>
+
+<!-- ── toast ───────────────────────────────────────────────────── -->
+<div class="sb-toast" id="toast"></div>
+
+<script src="sidebar.js"></script>
+</body>
+</html>
