@@ -29,13 +29,13 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.removeAll(() => {
     chrome.contextMenus.create({
       id: MENU_SELECTION,
-      title: "Add selection to Google Docs (Explore)",
+      title: "Add selection to Google Docs (AnswerDock)",
       contexts: ["selection"]
     });
 
     chrome.contextMenus.create({
       id: MENU_LINK,
-      title: "Add link to Google Docs (Explore)",
+      title: "Add link to Google Docs (AnswerDock)",
       contexts: ["link"]
     });
   });
@@ -60,7 +60,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
   await sendToDocsTab(docsTab.id, text);
 });
 
-function buildSelectionPayload (info, tab) {
+function buildSelectionPayload(info, tab) {
   const selected = String(info.selectionText || "").trim();
   if (!selected) return "";
 
@@ -77,7 +77,7 @@ function buildSelectionPayload (info, tab) {
   ].join("\n");
 }
 
-function buildLinkPayload (info, tab) {
+function buildLinkPayload(info, tab) {
   const linkUrl = String(info.linkUrl || "").trim();
   if (!linkUrl) return "";
 
@@ -92,7 +92,7 @@ function buildLinkPayload (info, tab) {
   ].join("\n");
 }
 
-async function ensureDocsTab () {
+async function ensureDocsTab() {
   const docsTabs = await chrome.tabs.query({ url: "https://docs.google.com/document/*" });
   if (docsTabs.length > 0) return docsTabs[0];
 
@@ -105,7 +105,7 @@ async function ensureDocsTab () {
       resolve(created);
     }, 12000);
 
-    function listener (tabId, changeInfo, updatedTab) {
+    function listener(tabId, changeInfo, updatedTab) {
       if (tabId !== created.id) return;
       if (changeInfo.status !== "complete") return;
 
@@ -118,32 +118,32 @@ async function ensureDocsTab () {
   });
 }
 
-function sendToDocsTab (tabId, text) {
+function sendToDocsTab(tabId, text) {
   return ensureDocsExploreReady(tabId).then(() => chrome.tabs.sendMessage(tabId, {
     type: "DE_INSERT_EXTERNAL_TEXT",
     text
-  })).catch(() => {});
+  })).catch(() => { });
 }
 
-function isDocsDocumentUrl (url) {
+function isDocsDocumentUrl(url) {
   return String(url || "").startsWith(DOCS_URL_PREFIX);
 }
 
-async function toggleDocsSidebar (tab) {
+async function toggleDocsSidebar(tab) {
   if (!tab?.id) return;
 
   await ensureDocsExploreReady(tab.id);
-  await chrome.tabs.sendMessage(tab.id, { type: "DE_TOGGLE" }).catch(() => {});
+  await chrome.tabs.sendMessage(tab.id, { type: "DE_TOGGLE" }).catch(() => { });
 }
 
-async function ensureDocsExploreReady (tabId) {
+async function ensureDocsExploreReady(tabId) {
   const ready = await pingDocsExplore(tabId);
   if (ready) return;
 
   await chrome.scripting.insertCSS({
     target: { tabId },
     files: ["content.css"]
-  }).catch(() => {});
+  }).catch(() => { });
 
   await chrome.scripting.executeScript({
     target: { tabId },
@@ -156,7 +156,7 @@ async function ensureDocsExploreReady (tabId) {
   }
 }
 
-async function pingDocsExplore (tabId) {
+async function pingDocsExplore(tabId) {
   try {
     const response = await chrome.tabs.sendMessage(tabId, { type: "DE_PING" });
     return Boolean(response?.ready);
@@ -165,7 +165,7 @@ async function pingDocsExplore (tabId) {
   }
 }
 
-function formatRetrievedDate (d) {
+function formatRetrievedDate(d) {
   const year = d.getFullYear();
   const month = d.toLocaleString("en-US", { month: "long" });
   const day = d.getDate();

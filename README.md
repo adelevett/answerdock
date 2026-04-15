@@ -25,7 +25,7 @@ Discover AnswerDock with instant answers with fast web search handoff, and citat
 | Search | Type in the sidebar search input |
 | Copy answer | Use Copy, then paste in Docs |
 | Copy citation | Use Copy citation, then paste in Docs |
-| Quick capture from web | Right-click selection or link and choose Add to Google Docs (Explore), then paste using Cmd+V (mac) Ctrl+V (Windows) |
+| Quick capture from web | Right-click selection or link and choose Add to Google Docs (AnswerDock), then paste using Cmd+V (mac) Ctrl+V (Windows) |
 
 ## Privacy summary
 
